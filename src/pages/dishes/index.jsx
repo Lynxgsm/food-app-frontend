@@ -17,6 +17,8 @@ const Dishes = () => {
         let services = new DishesServices();
         let tmpDishes = services.getDishesByCategory(category);
 
+        console.log(tmpDishes);
+
         setDishes(tmpDishes);
 
     }, []);
@@ -33,9 +35,16 @@ const Dishes = () => {
         </nav>
         <div className='px-12 grid grid-cols-5 gap-6'>
             {
-                dishes.map((dish, index) => {
+                dishes ? 
+                (
+                    dishes.map((dish, index) => {
                     return <FoodCard key={index} id={index} {...dish} />
-                })
+                    })
+                )
+                :
+                (
+                    <p>Vide</p>
+                )
             }
             {/* <FoodCard {...data} />
             <FoodCard {...data} />
