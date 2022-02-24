@@ -2,18 +2,24 @@ import axios from "axios";
 import { BASE_URL } from "../constants/urls";
 
 class DishesServices {
-  getDishesByCategory(category) {
-    return axios
+  getAllDishes() {
+    return axios.get(`${BASE_URL}/dishes`).then((response) => {
+      return response.data;
+    });
+  }
+
+  async getDishesByCategory(category) {
+    return await axios
       .get(`${BASE_URL}/dishes?category=${category}`)
-      .then((result) => result.data)
-      .then((data) => data.json());
+      .then((response) => {
+        return response.data;
+      });
   }
 
   getOneDish(id) {
-    return axios
-      .get(`${BASE_URL}/dishes?id=${id}`)
-      .then((result) => result.data)
-      .then((data) => data.json());
+    return axios.get(`${BASE_URL}/dishes/${id}`).then((response) => {
+      return response.data;
+    });
   }
 }
 
