@@ -6,27 +6,17 @@ const Dishes = () => {
   const [category, setCategory] = useState("pastas");
   const [dishes, setDishes] = useState([]);
 
-  /*  useEffect(() => {
+  useEffect(() => {
     const service = new DishesServices();
 
     service
       .getDishesByCategory(category)
       .then((result) => {
-        setDishes(result);
+        setDishes(result.data);
         console.log(result.data);
       })
       .catch((error) => console.error(error));
-  }, [category]); */
-
-  const service = new DishesServices();
-
-  service
-    .getDishesByCategory(category)
-    .then((result) => {
-      setDishes(result.response);
-      console.log(result.response);
-    })
-    .catch((error) => console.error(error));
+  }, [category]);
 
   return (
     <div>
